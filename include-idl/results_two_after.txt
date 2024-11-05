@@ -1,0 +1,235 @@
+
+running 20 tests
+test optimize::tests::test_compression_basic ... ignored
+test optimize::tests::test_compression_levels ... ignored
+test optimize::tests::test_compression_threshold ... ignored
+test optimize::tests::test_compression_with_other_optimizations ... ignored
+test optimize::tests::test_custom_field_exempt_context ... ignored
+test optimize::tests::test_custom_field_patterns ... ignored
+test optimize::tests::test_custom_field_removal_basic ... ignored
+test optimize::tests::test_custom_field_removal_counting ... ignored
+test optimize::tests::test_documentation_removal ... ignored
+test optimize::tests::test_nested_compression ... ignored
+test optimize::tests::test_nested_type_deduplication ... ignored
+test optimize::tests::test_preserved_context ... ignored
+test optimize::tests::test_preserved_fields ... ignored
+test optimize::tests::test_string_minification_basic ... ignored
+test optimize::tests::test_string_minification_preserve_indentation ... ignored
+test optimize::tests::test_string_minification_skip_fields ... ignored
+test optimize::tests::test_string_minification_utf8 ... ignored
+test optimize::tests::test_string_minification_with_max_length ... ignored
+test optimize::tests::test_type_deduplication ... ignored
+test optimize::tests::test_unique_types_preserved ... ignored
+
+test result: ok. 0 passed; 0 failed; 20 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+=== Starting Size Optimization Benchmarks ===
+
+--- Testing IDL Size Configuration ---
+Types: 5, Fields: 5, Doc Size: 100
+
+Generating test IDL with:
+- 5 types
+- 5 fields per type
+- 100 bytes of documentation
+Original IDL size: 8349 bytes
+
+Running docs_only optimization:
+Results:
+- Final size: 4337 bytes
+- Reduction: 4012 bytes (48.05%)
+- Items affected: {DocumentationRemoval: 37}
+- Processing time: {DocumentationRemoval: 96.7µs}
+Size Optimization/docs_only_5_types_5_fields
+                        time:   [114.02 µs 124.43 µs 137.42 µs]
+                        change: [+1.8829% +10.481% +19.564%] (p = 0.03 < 0.05)
+                        Performance has regressed.
+Found 2 outliers among 50 measurements (4.00%)
+  2 (4.00%) high mild
+
+Running full_opt optimization:
+Results:
+- Final size: 415 bytes
+- Reduction: 7934 bytes (95.03%)
+- Items affected: {Compression: 1, DocumentationRemoval: 37, TypeDeduplication: 1, StringMinification: 0, CustomFieldRemoval: 0}
+- Processing time: {DocumentationRemoval: 124.4µs, CustomFieldRemoval: 44µs, TypeDeduplication: 172.6µs, Compression: 1.212501ms, StringMinification: 54.5µs}
+Size Optimization/full_opt_5_types_5_fields
+                        time:   [1.4395 ms 1.6209 ms 1.8106 ms]
+                        change: [-0.0630% +8.1262% +16.881%] (p = 0.06 > 0.05)
+                        No change in performance detected.
+Found 5 outliers among 50 measurements (10.00%)
+  4 (8.00%) high mild
+  1 (2.00%) high severe
+
+Running no_compression optimization:
+Results:
+- Final size: 1151 bytes
+- Reduction: 7198 bytes (86.21%)
+- Items affected: {StringMinification: 0, TypeDeduplication: 1, CustomFieldRemoval: 0, DocumentationRemoval: 37}
+- Processing time: {DocumentationRemoval: 124.7µs, TypeDeduplication: 211.9µs, CustomFieldRemoval: 26.3µs, StringMinification: 37µs}
+Size Optimization/no_compression_5_types_5_fields
+                        time:   [296.52 µs 303.49 µs 312.84 µs]
+                        change: [+1.8714% +5.6284% +9.2999%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 6 outliers among 50 measurements (12.00%)
+  2 (4.00%) high mild
+  4 (8.00%) high severe
+
+--- Testing IDL Size Configuration ---
+Types: 20, Fields: 10, Doc Size: 500
+
+Generating test IDL with:
+- 20 types
+- 10 fields per type
+- 500 bytes of documentation
+Original IDL size: 155066 bytes
+
+Running docs_only optimization:
+Results:
+- Final size: 32019 bytes
+- Reduction: 123047 bytes (79.35%)
+- Items affected: {DocumentationRemoval: 242}
+- Processing time: {DocumentationRemoval: 476.9µs}
+Size Optimization/docs_only_20_types_10_fields
+                        time:   [903.68 µs 918.34 µs 935.73 µs]
+                        change: [-8.4179% -3.6663% +0.9265%] (p = 0.15 > 0.05)
+                        No change in performance detected.
+Found 6 outliers among 50 measurements (12.00%)
+  2 (4.00%) high mild
+  4 (8.00%) high severe
+
+Running full_opt optimization:
+Results:
+- Final size: 447 bytes
+- Reduction: 154619 bytes (99.71%)
+- Items affected: {StringMinification: 0, Compression: 1, CustomFieldRemoval: 0, DocumentationRemoval: 242, TypeDeduplication: 1}
+- Processing time: {DocumentationRemoval: 512.4µs, TypeDeduplication: 809.3µs, CustomFieldRemoval: 48.5µs, Compression: 1.3724ms, StringMinification: 74.6µs}
+Size Optimization/full_opt_20_types_10_fields
+                        time:   [3.1436 ms 3.1735 ms 3.2057 ms]
+                        change: [-10.873% -7.2116% -3.7279%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 2 outliers among 50 measurements (4.00%)
+  2 (4.00%) high severe
+
+Running no_compression optimization:
+Results:
+- Final size: 2621 bytes
+- Reduction: 152445 bytes (98.31%)
+- Items affected: {StringMinification: 0, DocumentationRemoval: 242, TypeDeduplication: 1, CustomFieldRemoval: 0}
+- Processing time: {CustomFieldRemoval: 47.3µs, DocumentationRemoval: 507µs, StringMinification: 66.3µs, TypeDeduplication: 792.5µs}
+Size Optimization/no_compression_20_types_10_fields
+                        time:   [1.6519 ms 1.7332 ms 1.8239 ms]
+                        change: [-1.8108% +0.9846% +4.0001%] (p = 0.51 > 0.05)
+                        No change in performance detected.
+Found 5 outliers among 50 measurements (10.00%)
+  1 (2.00%) high mild
+  4 (8.00%) high severe
+
+--- Testing IDL Size Configuration ---
+Types: 50, Fields: 20, Doc Size: 1000
+
+Generating test IDL with:
+- 50 types
+- 20 fields per type
+- 1000 bytes of documentation
+Original IDL size: 1268931 bytes
+
+Running docs_only optimization:
+Results:
+- Final size: 155414 bytes
+- Reduction: 1113517 bytes (87.75%)
+- Items affected: {DocumentationRemoval: 1102}
+- Processing time: {DocumentationRemoval: 2.7542ms}
+Size Optimization/docs_only_50_types_20_fields
+                        time:   [8.4733 ms 9.0051 ms 9.5506 ms]
+                        change: [+75.248% +86.547% +98.726%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 3 outliers among 50 measurements (6.00%)
+  3 (6.00%) high mild
+
+Running full_opt optimization:
+Results:
+- Final size: 507 bytes
+- Reduction: 1268424 bytes (99.96%)
+- Items affected: {Compression: 1, TypeDeduplication: 1, StringMinification: 0, CustomFieldRemoval: 0, DocumentationRemoval: 1102}
+- Processing time: {StringMinification: 975.1µs, TypeDeduplication: 10.0503ms, CustomFieldRemoval: 421.4µs, Compression: 3.0442ms, DocumentationRemoval: 2.7122ms}
+Size Optimization/full_opt_50_types_20_fields
+                        time:   [19.005 ms 19.637 ms 20.322 ms]
+                        change: [+57.965% +64.192% +70.265%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 1 outliers among 50 measurements (2.00%)
+  1 (2.00%) high mild
+
+Running no_compression optimization:
+Results:
+- Final size: 5571 bytes
+- Reduction: 1263360 bytes (99.56%)
+- Items affected: {CustomFieldRemoval: 0, TypeDeduplication: 1, StringMinification: 0, DocumentationRemoval: 1102}
+- Processing time: {TypeDeduplication: 7.5269ms, DocumentationRemoval: 2.2142ms, CustomFieldRemoval: 223.5µs, StringMinification: 228.8µs}
+Size Optimization/no_compression_50_types_20_fields
+                        time:   [18.845 ms 20.207 ms 21.663 ms]
+                        change: [+85.966% +100.13% +115.04%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 3 outliers among 50 measurements (6.00%)
+  3 (6.00%) high mild
+
+
+=== Size Optimization Benchmarks Completed ===
+
+=== Starting Optimization Analysis ===
+
+Generating test IDL with:
+- 30 types
+- 15 fields per type
+- 750 bytes of documentation
+
+Optimization Analysis:
+Original Size: 454371 bytes
+
+Testing: Documentation Removal
+Results:
+- Size Reduction: 383737 bytes (84.45%)
+- Items Affected: 512
+- Processing Time: 1.5305ms
+
+Testing: Type Deduplication
+Results:
+- Size Reduction: 450515 bytes (99.15%)
+- Items Affected: 1
+- Processing Time: 4.016201ms
+
+Testing: String Minification
+Results:
+- Size Reduction: 383737 bytes (84.45%)
+- Items Affected: 0
+- Processing Time: 1.764101ms
+
+Testing: Custom Field Removal
+Results:
+- Size Reduction: 383737 bytes (84.45%)
+- Items Affected: 0
+- Processing Time: 2.142201ms
+
+Testing: Compression
+Results:
+- Size Reduction: 453115 bytes (99.72%)
+- Items Affected: 1
+- Processing Time: 8.244303ms
+
+Testing all optimizations combined:
+
+Final Results:
+- Final Size: 479 bytes
+- Total Reduction: 453892 bytes (99.89%)
+- Metrics: OptimizationMetrics { original_size: 454371, final_size: 479, size_reduction: {CustomFieldRemoval: 0, StringMinification: 0, DocumentationRemoval: 383737, TypeDeduplication: 450515, Compression: 3531}, processing_time: {CustomFieldRemoval: 205.8µs, DocumentationRemoval: 1.2777ms, StringMinification: 286.3µs, TypeDeduplication: 4.289002ms, Compression: 1.803601ms}, items_affected: {TypeDeduplication: 1, StringMinification: 0, DocumentationRemoval: 512, CustomFieldRemoval: 0, Compression: 1} }
+Full Optimization Analysis/all_optimizations
+                        time:   [9.1389 ms 9.3274 ms 9.5328 ms]
+                        change: [+22.653% +29.365% +35.431%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 11 outliers among 100 measurements (11.00%)
+  9 (9.00%) high mild
+  2 (2.00%) high severe
+
+
+=== Optimization Analysis Completed ===

@@ -2,6 +2,12 @@
 
 pub mod parse;
 
+#[cfg(feature = "parse")]
+pub mod just_optimize;
+
+#[cfg(feature = "parse-rayon")]
+pub mod rayon_optimize;
+
 #[cfg(feature = "shrink")]
 mod shrink;
 
