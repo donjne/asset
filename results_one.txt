@@ -1,0 +1,302 @@
+
+running 1 test
+test test_id ... ignored
+
+test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 1 test
+test test_id ... ignored
+
+test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 1 test
+test test_id ... ignored
+
+test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 20 tests
+test constraints::and::tests::test_build ... ignored
+test constraints::empty::tests::test_build ... ignored
+test constraints::not::tests::test_build ... ignored
+test constraints::or::tests::test_build ... ignored
+test constraints::owned_by::tests::test_build ... ignored
+test constraints::pubkey_match::tests::test_build ... ignored
+test extensions::attributes::tests::test_add ... ignored
+test extensions::creators::tests::test_add ... ignored
+test extensions::grouping::tests::test_set_delegate ... ignored
+test extensions::grouping::tests::test_set_max_size ... ignored
+test extensions::links::tests::test_add ... ignored
+test extensions::manager::tests::test_set ... ignored
+test extensions::metadata::tests::test_compatibility ... ignored
+test extensions::metadata::tests::test_set ... ignored
+test extensions::metadata::tests::test_set_image_uri ... ignored
+test extensions::properties::tests::test_create_property ... ignored
+test extensions::properties::tests::test_remove_property ... ignored
+test extensions::proxy::tests::test_set ... ignored
+test extensions::proxy::tests::test_set_authority ... ignored
+test state::delegate::tests::test_decode_roles ... ignored
+
+test result: ok. 0 passed; 0 failed; 20 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 1 test
+test test_id ... ignored
+
+test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 20 tests
+test just_optimize::tests::tests::test_compression_basic ... ignored
+test just_optimize::tests::tests::test_compression_levels ... ignored
+test just_optimize::tests::tests::test_compression_threshold ... ignored
+test just_optimize::tests::tests::test_compression_with_other_optimizations ... ignored
+test just_optimize::tests::tests::test_custom_field_exempt_context ... ignored
+test just_optimize::tests::tests::test_custom_field_patterns ... ignored
+test just_optimize::tests::tests::test_custom_field_removal_basic ... ignored
+test just_optimize::tests::tests::test_custom_field_removal_counting ... ignored
+test just_optimize::tests::tests::test_documentation_removal ... ignored
+test just_optimize::tests::tests::test_nested_compression ... ignored
+test just_optimize::tests::tests::test_nested_type_deduplication ... ignored
+test just_optimize::tests::tests::test_preserved_context ... ignored
+test just_optimize::tests::tests::test_preserved_fields ... ignored
+test just_optimize::tests::tests::test_string_minification_basic ... ignored
+test just_optimize::tests::tests::test_string_minification_preserve_indentation ... ignored
+test just_optimize::tests::tests::test_string_minification_skip_fields ... ignored
+test just_optimize::tests::tests::test_string_minification_utf8 ... ignored
+test just_optimize::tests::tests::test_string_minification_with_max_length ... ignored
+test just_optimize::tests::tests::test_type_deduplication ... ignored
+test just_optimize::tests::tests::test_unique_types_preserved ... ignored
+
+test result: ok. 0 passed; 0 failed; 20 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+
+=== Starting Size Optimization Benchmarks ===
+
+--- Testing IDL Size Configuration ---
+Types: 5, Fields: 5, Doc Size: 100
+
+Generating test IDL with:
+- 5 types
+- 5 fields per type
+- 100 bytes of documentation
+Original IDL size: 8349 bytes
+
+Running docs_only optimization:
+Results:
+- Final size: 4337 bytes
+- Reduction: 4012 bytes (48.05%)
+- Items affected: {DocumentationRemoval: 37}
+- Processing time: {DocumentationRemoval: 776.601µs}
+Size Optimization/docs_only_5_types_5_fields
+                        time:   [69.358 µs 72.960 µs 77.935 µs]
+                        change: [-45.093% -40.824% -36.271%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 6 outliers among 50 measurements (12.00%)
+  2 (4.00%) high mild
+  4 (8.00%) high severe
+
+Running full_opt optimization:
+Results:
+- Final size: 415 bytes
+- Reduction: 7934 bytes (95.03%)
+- Items affected: {StringMinification: 0, TypeDeduplication: 1, Compression: 1, DocumentationRemoval: 37, CustomFieldRemoval: 0}
+- Processing time: {Compression: 352.601µs, StringMinification: 41.4µs, CustomFieldRemoval: 51.5µs, DocumentationRemoval: 37.5µs, TypeDeduplication: 280.9µs}
+Size Optimization/full_opt_5_types_5_fields
+                        time:   [263.46 µs 271.75 µs 281.18 µs]
+                        change: [-82.616% -81.089% -79.611%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 5 outliers among 50 measurements (10.00%)
+  2 (4.00%) high mild
+  3 (6.00%) high severe
+
+Running no_compression optimization:
+Results:
+- Final size: 1151 bytes
+- Reduction: 7198 bytes (86.21%)
+- Items affected: {CustomFieldRemoval: 0, StringMinification: 0, DocumentationRemoval: 37, TypeDeduplication: 1}
+- Processing time: {DocumentationRemoval: 85.2µs, CustomFieldRemoval: 12.6µs, StringMinification: 23.5µs, TypeDeduplication: 309.3µs}
+Size Optimization/no_compression_5_types_5_fields
+                        time:   [228.35 µs 234.56 µs 241.28 µs]
+                        change: [-28.344% -25.547% -22.831%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 3 outliers among 50 measurements (6.00%)
+  3 (6.00%) high mild
+
+--- Testing IDL Size Configuration ---
+Types: 20, Fields: 10, Doc Size: 500
+
+Generating test IDL with:
+- 20 types
+- 10 fields per type
+- 500 bytes of documentation
+Original IDL size: 155066 bytes
+
+Running docs_only optimization:
+Results:
+- Final size: 32019 bytes
+- Reduction: 123047 bytes (79.35%)
+- Items affected: {DocumentationRemoval: 242}
+- Processing time: {DocumentationRemoval: 219.3µs}
+Size Optimization/docs_only_20_types_10_fields
+                        time:   [695.04 µs 721.96 µs 754.98 µs]
+                        change: [-27.074% -23.413% -19.602%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 3 outliers among 50 measurements (6.00%)
+  3 (6.00%) high severe
+
+Running full_opt optimization:
+Results:
+- Final size: 447 bytes
+- Reduction: 154619 bytes (99.71%)
+- Items affected: {CustomFieldRemoval: 0, Compression: 1, StringMinification: 0, TypeDeduplication: 1, DocumentationRemoval: 242}
+- Processing time: {TypeDeduplication: 581.601µs, DocumentationRemoval: 242.6µs, StringMinification: 44.2µs, CustomFieldRemoval: 20.3µs, Compression: 65.7µs}
+Size Optimization/full_opt_20_types_10_fields
+                        time:   [1.2359 ms 1.2797 ms 1.3425 ms]
+                        change: [-54.675% -50.027% -45.267%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 5 outliers among 50 measurements (10.00%)
+  3 (6.00%) high mild
+  2 (4.00%) high severe
+
+Running no_compression optimization:
+Results:
+- Final size: 2621 bytes
+- Reduction: 152445 bytes (98.31%)
+- Items affected: {CustomFieldRemoval: 0, StringMinification: 0, DocumentationRemoval: 242, TypeDeduplication: 1}
+- Processing time: {DocumentationRemoval: 274µs, StringMinification: 41.8µs, TypeDeduplication: 650.8µs, CustomFieldRemoval: 20.3µs}
+Size Optimization/no_compression_20_types_10_fields
+                        time:   [1.1060 ms 1.1127 ms 1.1200 ms]
+                        change: [-35.472% -33.549% -31.480%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 3 outliers among 50 measurements (6.00%)
+  1 (2.00%) high mild
+  2 (4.00%) high severe
+
+--- Testing IDL Size Configuration ---
+Types: 50, Fields: 20, Doc Size: 1000
+
+Generating test IDL with:
+- 50 types
+- 20 fields per type
+- 1000 bytes of documentation
+Original IDL size: 1268931 bytes
+
+Running docs_only optimization:
+Results:
+- Final size: 155414 bytes
+- Reduction: 1113517 bytes (87.75%)
+- Items affected: {DocumentationRemoval: 1102}
+- Processing time: {DocumentationRemoval: 1.5147ms}
+Size Optimization/docs_only_50_types_20_fields
+                        time:   [4.2973 ms 4.4181 ms 4.5670 ms]
+                        change: [-55.459% -52.547% -49.448%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 5 outliers among 50 measurements (10.00%)
+  3 (6.00%) high mild
+  2 (4.00%) high severe
+
+Running full_opt optimization:
+Results:
+- Final size: 507 bytes
+- Reduction: 1268424 bytes (99.96%)
+- Items affected: {CustomFieldRemoval: 0, StringMinification: 0, DocumentationRemoval: 1102, TypeDeduplication: 1, Compression: 1}
+- Processing time: {Compression: 149.7µs, TypeDeduplication: 2.4269ms, DocumentationRemoval: 1.3386ms, StringMinification: 80.2µs, CustomFieldRemoval: 38.4µs}
+Size Optimization/full_opt_50_types_20_fields
+                        time:   [7.6709 ms 8.0397 ms 8.4752 ms]
+                        change: [-64.227% -61.960% -59.522%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 2 outliers among 50 measurements (4.00%)
+  1 (2.00%) high mild
+  1 (2.00%) high severe
+
+Running no_compression optimization:
+Results:
+- Final size: 5571 bytes
+- Reduction: 1263360 bytes (99.56%)
+- Items affected: {TypeDeduplication: 1, StringMinification: 0, CustomFieldRemoval: 0, DocumentationRemoval: 1102}
+- Processing time: {DocumentationRemoval: 1.6322ms, TypeDeduplication: 3.0089ms, StringMinification: 88.2µs, CustomFieldRemoval: 39.7µs}
+Size Optimization/no_compression_50_types_20_fields
+                        time:   [8.6536 ms 9.4088 ms 10.176 ms]
+                        change: [-61.437% -57.943% -53.941%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 3 outliers among 50 measurements (6.00%)
+  2 (4.00%) high mild
+  1 (2.00%) high severe
+
+
+=== Size Optimization Benchmarks Completed ===
+
+=== Starting Optimization Analysis ===
+
+Generating test IDL with:
+- 30 types
+- 15 fields per type
+- 750 bytes of documentation
+
+Optimization Analysis:
+Original Size: 454371 bytes
+
+Testing: Documentation Removal
+Results:
+- Size Reduction: 383737 bytes (84.45%)
+- Items Affected: 512
+- Processing Time: 816.9µs
+
+Testing: Type Deduplication
+Results:
+- Size Reduction: 450515 bytes (99.15%)
+- Items Affected: 1
+- Processing Time: 1.989901ms
+
+Testing: String Minification
+Results:
+- Size Reduction: 383737 bytes (84.45%)
+- Items Affected: 0
+- Processing Time: 1.972701ms
+
+Testing: Custom Field Removal
+Results:
+- Size Reduction: 383737 bytes (84.45%)
+- Items Affected: 0
+- Processing Time: 660.5µs
+
+Testing: Compression
+Results:
+- Size Reduction: 453115 bytes (99.72%)
+- Items Affected: 1
+- Processing Time: 1.0509ms
+
+Testing all optimizations combined:
+
+Final Results:
+- Final Size: 479 bytes
+- Total Reduction: 453892 bytes (99.89%)
+- Metrics: OptimizationMetrics { original_size: 454371, final_size: 479, size_reduction: {StringMinification: 0, TypeDeduplication: 450515, DocumentationRemoval: 383737, CustomFieldRemoval: 0, Compression: 3531}, processing_time: {DocumentationRemoval: 909.2µs, StringMinification: 104.7µs, CustomFieldRemoval: 32.8µs, TypeDeduplication: 1.652101ms, Compression: 83.4µs}, items_affected: {TypeDeduplication: 1, CustomFieldRemoval: 0, StringMinification: 0, DocumentationRemoval: 512, Compression: 1} }
+Full Optimization Analysis/all_optimizations
+                        time:   [3.4258 ms 3.5561 ms 3.6979 ms]
+                        change: [-63.595% -61.875% -59.995%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 14 outliers among 100 measurements (14.00%)
+  4 (4.00%) high mild
+  10 (10.00%) high severe
+
+
+=== Optimization Analysis Completed ===
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

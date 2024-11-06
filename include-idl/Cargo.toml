@@ -9,6 +9,7 @@ license = "Apache-2.0"
 shrink = ["dep:flate2"]
 parse = ["dep:flate2", "dep:goblin", "dep:serde_json", "dep:md5", "dep:base64"]
 parse-rayon = ["dep:flate2", "dep:goblin", "dep:serde_json", "dep:md5", "dep:base64", "dep:rayon"]
+just-optimize = ["parse"]
 rayon-optimize = ["parse-rayon"]
 
 [dependencies]
@@ -25,5 +26,5 @@ criterion = { version = "0.5", features = ["html_reports"] }
 [[bench]]
 name = "optimizer_benchmarks"
 harness = false
-required-features = ["optimize"]
+required-features = ["just-optimize"]
 
